@@ -18,13 +18,23 @@ namespace test_api_deploy.Controllers
             _configuration = configuration;
             connectionString = configuration.GetConnectionString("Database") ?? string.Empty;
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> get()
         {
             var data = new List<User>();
             var query = "select*from users";
             using var connection = new SqlConnection(connectionString);
             data = connection.Query<User>(query).ToList();
+
+            return Ok(data);
+        }
+        [HttpGet("get_id")]
+        public async Task<IActionResult> getId( int id)
+        {
+            var data = new User();
+            var query = $"select*from users";
+            using var connection = new SqlConnection(connectionString);
+            data = connection.Query<User>(query).FirstOrDefault(x => x.id == id);
 
             return Ok(data);
         }
