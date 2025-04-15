@@ -364,3 +364,5 @@ FodyWeavers.xsd
 # Config file
 .appsettings.json
 .appsettings.*json
+/test_api_deploy/test_api_deploy/appsettings.json
+/test_api_deploy/test_api_deploy/appsettings.Development.json
