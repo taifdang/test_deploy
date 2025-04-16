@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: dotnet build test_api_deploy/test_api_deploy/test_api_deploy.csproj --configuration Release
     - name: Format
-      run: dotnet format --verify-no-changes --verbosity diagnostic
+      run: dotnet format  test_api_deploy/test_api_deploy/test_api_deploy.csproj --verify-no-changes --verbosity diagnostic
    
