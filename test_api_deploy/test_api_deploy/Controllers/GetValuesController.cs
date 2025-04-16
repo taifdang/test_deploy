@@ -43,7 +43,6 @@ namespace test_api_deploy.Controllers
         [HttpPost]
         public async Task<IActionResult> add(string name)
         {
-            //1231
             User user = new User() { name = name };
 
             var query = "INSERT INTO users (name) VALUES (@name)";
