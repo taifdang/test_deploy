@@ -21,7 +21,7 @@ namespace test_api_deploy.Controllers
             connectionString = configuration.GetConnectionString("Database") ?? string.Empty;
         }
         [HttpGet]
-        public async Task<IActionResult> get()
+        public IActionResult get()
         {
             var data = new List<User>();
             var query = "select*from users";
@@ -31,17 +31,17 @@ namespace test_api_deploy.Controllers
             return Ok(data);
         }
         [HttpGet("get_id")]
-        public async Task<IActionResult> getId( int id)
+        public IActionResult getId( int id)
         {
             var data = new User();
             var query = $"select*from users";
             using var connection = new SqlConnection(connectionString);
-            data = connection.Query<User>(query).FirstOrDefault(x => x.id == id);
+            data =  connection.Query<User>(query).FirstOrDefault(x => x.id == id);
 
             return Ok(data);
         }
         [HttpPost]
-        public async Task<IActionResult> add(string name)
+        public IActionResult add(string name)
         {
             //1231
             User user = new User() { name = name };
