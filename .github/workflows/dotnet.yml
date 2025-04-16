@@ -10,7 +10,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  dotnet-format:
 
     runs-on: ubuntu-latest
 
@@ -22,7 +22,6 @@ jobs:
         dotnet-version: 8.0.x
     - name: Restore dependencies
       run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
-    - name: Test
-      run: dotnet test --no-build --verbosity diagnostic
+    - name: Format
+      run: dotnet format --verify-no-changes --verbosity diagnostic
+   
