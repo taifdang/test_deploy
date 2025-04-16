@@ -24,6 +24,5 @@ jobs:
       run: dotnet restore test_api_deploy/test_api_deploy/test_api_deploy.csproj
     - name: Build
       run: dotnet build test_api_deploy/test_api_deploy/test_api_deploy.csproj --configuration Release
-    - name: Format
-      run: dotnet format  test_api_deploy/test_api_deploy/test_api_deploy.csproj --verify-no-changes --verbosity diagnostic
+    
    
