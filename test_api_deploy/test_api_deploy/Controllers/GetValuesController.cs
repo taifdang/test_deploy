@@ -42,8 +42,9 @@ namespace test_api_deploy.Controllers
             return Task.FromResult<IActionResult>(Ok(data));
         }
         [HttpPost]
-        public Task<IActionResult> add(string name)
+        public Task<IActionResult> add(string name = "Nguyen Van A")
         {
+            ///123123
             User user = new User() { name = name };
 
             var query = "INSERT INTO users (name) VALUES (@name)";
