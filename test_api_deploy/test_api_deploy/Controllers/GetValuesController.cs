@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Data;
 using test_api_deploy.Models;
 
 namespace test_api_deploy.Controllers
@@ -36,6 +38,18 @@ namespace test_api_deploy.Controllers
             using var connection = new SqlConnection(connectionString);
             data = connection.Query<User>(query).FirstOrDefault(x => x.id == id);
 
+            return Ok(data);
+        }
+        [HttpPost]
+        public async Task<IActionResult> add(string name)
+        {
+            User user = new User() { name = name };
+
+            var query = "INSERT INTO users (name) VALUES (@name)";
+            using IDbConnection connection = new SqlConnection(connectionString);
+
+            int rowsAffected = connection.Execute(query, user);
+            User data = connection.Query<User>("select*from users").FirstOrDefault(x => x.name == name);
             return Ok(data);
         }
     }
