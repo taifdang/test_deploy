@@ -17,6 +17,7 @@ namespace test_api_deploy.Controllers
         string connectionString;
         public GetValuesController(IConfiguration configuration)
         {
+            //12312321
             _configuration = configuration;
             connectionString = configuration.GetConnectionString("Database") ?? string.Empty;
         }
@@ -52,5 +53,6 @@ namespace test_api_deploy.Controllers
             User data = connection.Query<User>("select*from users").FirstOrDefault(x => x.name == name);
             return Task.FromResult<IActionResult>(Ok(data));
         }
+
     }
 }
