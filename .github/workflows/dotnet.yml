@@ -21,7 +21,9 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore test_deploy\test_api_deploy\test_api_deploy/test_api_deploy.csproj
+    - name: Build
+      run: dotnet build test_deploy\test_api_deploy\test_api_deploy/test_api_deploy.csproj --configuration Release
     - name: Format
       run: dotnet format --verify-no-changes --verbosity diagnostic
    
